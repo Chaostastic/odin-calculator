@@ -15,12 +15,12 @@ body {
 
 .display {
     background-color: rgb(67, 100, 23);
-    height: 75px;
+    height: 100px;
     margin: 40px 20px;
     border: 2px solid black;
     border-radius: 5px;
     text-align: end;
-    font-size: 65px;
+    font-size: 40px;
     font-weight: 500;
     color: white;
 }
@@ -48,6 +48,7 @@ body {
     background-color: rgb(201, 207, 207);
 }
 
-.button.operator {
+.button.operator,
+.button.evaluate {
     background-color: rgb(156, 180, 180);
 }
