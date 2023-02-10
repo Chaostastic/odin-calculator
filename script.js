@@ -3,6 +3,8 @@ const answerDisplay = document.querySelector(".display .answer");
 const numberButtons = document.querySelectorAll(".number.button");
 const operatorButtons = document.querySelectorAll(".operator.button");
 const evaluateButton = document.querySelector(".evaluate.button");
+const clearButton = document.querySelector(".clear.button");
+const deleteButton = document.querySelector(".delete.button");
 
 const operations = {
     "+": (operand1, operand2) => +operand1 + +operand2,
@@ -48,11 +50,25 @@ function buttonClick(event) {
 }
 
 function operate() {
-    let answer = evaluate(equationDisplay.textContent);
-    if (answer === Infinity) answer = "Uh oh"
-    answerDisplay.textContent = answer
+    const answer = evaluate(equationDisplay.textContent);
+    if (answer === Infinity) {
+        answerDisplay.textContent = "Uh oh";
+    } else {
+        answerDisplay.textContent = "=" + answer;
+    }
+}
+
+function clearDisplay() {
+    equationDisplay.textContent = "0";
+    answerDisplay.textContent = "=";
+}
+
+function backSpace() {
+    equationDisplay.textContent = equationDisplay.textContent.slice(0, -1);
 }
 
 numberButtons.forEach((btn) => btn.addEventListener("click", buttonClick));
 operatorButtons.forEach((btn) => btn.addEventListener("click", buttonClick));
+clearButton.addEventListener("click", clearDisplay);
 evaluateButton.addEventListener("click", operate);
+deleteButton.addEventListener("click", backSpace);
