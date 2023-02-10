@@ -24,7 +24,7 @@ function calculate(operand1, operand2, operator) {
 }
 
 function separate(equation, operator) {
-    const operatorIndex = equation.indexOf(operator);
+    const operatorIndex = equation.lastIndexOf(operator);
     const operand1 = equation.slice(0, operatorIndex);
     const operand2 = equation.slice(operatorIndex + 1);
     return [operand1, operand2];
