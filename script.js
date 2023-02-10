@@ -15,11 +15,11 @@ function calculate(operand1, operand2, operator) {
     if (isNaN(operand1)) {
         operand1 = evaluate(operand1);
         if (operand1 === null) return "Syntax error";
-    };
+    }
     if (isNaN(operand2)) {
         operand2 = evaluate(operand2);
         if (operand2 === null) return "Syntax error";
-    };
+    }
     return operations[operator](operand1, operand2);
 }
 
@@ -32,25 +32,27 @@ function separate(equation, operator) {
 
 function evaluate(equation) {
     const operators = ["+", "-", "*", "/"];
-    for (let i of operators) {
-        if (equation.includes(i)) {
-            return calculate(...separate(equation, i), i);
-        };
-    };
+    for (let operator of operators) {
+        if (equation.includes(operator)) {
+            return calculate(...separate(equation, operator), operator);
+        }
+    }
     return null;
 }
 
-function click(event) {
+function buttonClick(event) {
     if (equationDisplay.textContent === "0") {
         equationDisplay.textContent = "";
-    };
+    }
     equationDisplay.textContent += event.target.textContent;
 }
 
 function operate() {
-    answerDisplay.textContent = evaluate(equationDisplay.textContent);
+    let answer = evaluate(equationDisplay.textContent);
+    if (answer === Infinity) answer = "Uh oh"
+    answerDisplay.textContent = answer
 }
 
-numberButtons.forEach((btn) => btn.addEventListener("click", click));
-operatorButtons.forEach((btn) => btn.addEventListener("click", click));
+numberButtons.forEach((btn) => btn.addEventListener("click", buttonClick));
+operatorButtons.forEach((btn) => btn.addEventListener("click", buttonClick));
 evaluateButton.addEventListener("click", operate);
