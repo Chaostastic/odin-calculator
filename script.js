@@ -65,6 +65,7 @@ function clearDisplay() {
 
 function backSpace() {
     equationDisplay.textContent = equationDisplay.textContent.slice(0, -1);
+    if (equationDisplay.textContent === "") equationDisplay.textContent = "0";
 }
 
 numberButtons.forEach((btn) => btn.addEventListener("click", buttonClick));
