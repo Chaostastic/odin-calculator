@@ -15,7 +15,8 @@ body {
 
 .display {
     background-color: rgb(67, 100, 23);
-    height: 100px;
+    word-wrap: break-word;
+    min-height: 100px;
     margin: 40px 20px;
     border: 2px solid black;
     border-radius: 5px;
